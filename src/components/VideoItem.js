@@ -35,4 +35,3 @@ const VideoItem = ({ video, onVideoSelect, searcher }) => {
 };
 
 export default VideoItem
-    

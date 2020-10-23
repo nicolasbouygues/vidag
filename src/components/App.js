@@ -8,7 +8,7 @@ import dailymotion from '../apis/dailymotion';
 class App extends React.Component {
 
     state = { videos : [], selectedVideo: null, search_engine: '' };
-    
+
     onTermSubmit = async (term, searcher) => {
         if (searcher === 'youtube') {
             const response = await youtube.get('/search', {
@@ -16,7 +16,7 @@ class App extends React.Component {
                     q: term
                 }
             })
-            this.setState({ 
+            this.setState({
                 videos: response.data.items,
                 selectedVideo: null,
                 search_engine: searcher
@@ -24,7 +24,7 @@ class App extends React.Component {
         } else if (searcher === 'dailymotion') {
             const response = await dailymotion.get(`/videos?search=${term}&limit=5&fields=id%2Ctitle%2Cdescription%2Cthumbnail_240_url`)
             console.log(response.data.list);
-            this.setState({ 
+            this.setState({
                 videos: response.data.list,
                 selectedVideo: null,
                 search_engine: searcher
@@ -37,8 +37,8 @@ class App extends React.Component {
     }
 
     render() {
-        return ( 
-            <div className="ui container"> 
+        return (
+            <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
                 <div className="ui grid">
                     <div className="ui row">
@@ -55,4 +55,4 @@ class App extends React.Component {
     }
 }
 
-export default App; 
+export default App;
